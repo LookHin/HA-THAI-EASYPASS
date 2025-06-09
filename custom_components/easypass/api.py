@@ -25,7 +25,7 @@ EASYPASS_RETRY_WAIT_SEC = 300
 class LoginEasyPass:
     def login_easypass(session, login):
         # _LOGGER.info(login)
-        session.get(EASYPASS_LOGIN_URL)
+        session.get(EASYPASS_LOGIN_URL, allow_redirects=True)
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
         payload = f"email={login['username']}&password={login['password']}"
         session.post(EASYPASS_SIGNIN_URL, data=payload, headers=headers)
